@@ -2,7 +2,13 @@
 // Created by poloj on 12-06-2026.
 //
 #include<stdio.h>
+struct WordCounter {
+    char word[100];
+    int wordCount;
+};
 int main(void) {
+    struct WordCounter words[100];
+    int uniquewordcount=0;
     setbuf(stdout,0);
     char paragraph[100]="Bob hit an bat";
     char words[10][10];
