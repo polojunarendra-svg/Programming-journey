@@ -17,6 +17,8 @@ int strcmp(char *s1, char *s2) {
      }
     return 0;
 }
+
+
 int main(void) {
     char paragraph[150] ="Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball";
     char words[80][300];
@@ -41,6 +43,7 @@ int main(void) {
             j++;
         }
         printf("\n");
+    
     }
     printf("================================================\n");
     for (int i =0;i<wordcount;i++) {
