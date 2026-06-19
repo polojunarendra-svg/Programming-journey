@@ -1,6 +1,3 @@
-//
-// Created by poloj on 18-06-2026.
-//
 #include <stdio.h>
 struct wordfrequency {
     char word[15];
@@ -49,7 +46,6 @@ int main(void) {
 
     //printf("%d",sizeof(paragraph));
     //printf("%s",paragraph);
-    int unguiecount=0;
     char words[100][10];
     int wcount = 0;
     for (int i = 0,index = 0, j = 0 ; i<sizeof(paragraph)-1;i++) {
@@ -118,43 +114,48 @@ int main(void) {
         char *printedwords[10];
         int flag = 0;
         printedwords[i] = worddictionary[i].word;
-        //if () {
+       // if () {
             printf("%s\t ",worddictionary[i].word);
             printf("%d \n",worddictionary[i].frequency);
         //}
 
 
     }
-    char uniquewords[100][10];
-    int uwc=0;
-    for (int i = 0; i < wcount; ++i) {
-        for (int j = 0;j<wcount;j++) {
-            strcpy (*uniquewords,*words);
+    char unquietwords[35][5];
+    for (int i =0,j=0,index=0;i<wcount;i++) {
+        while (words[i][j]!='\0') {
+            unquietwords[index][j] = words[i][j];
+            j++;
+        }
+        unquietwords[index][j] = '\0';
+        index = index+1;
+        j=0;
+      //  i++;
 
-            printf("%c",uniquewords[i][j]);
-//printf("---------");
-            printf("%c",words[i][j]);
-        }
     }
-    // for (int i =0,index=0;i<wcount;i++) {
-    //     int j=0;
-    //     while (words[i][j]!='\0') {
-    //         uniquewords[index][j] = words[i][j];
-    //         i++;
-    //         j++;
+    // for (int i =0;i<wcount;i++) {
+    //     for (int j = 0;j<wcount;j++) {
+    //         printf("%c",unquietwords[i][j]);
     //     }
-    //     uwc=uwc+1;
     //     printf("\n");
-    //     index++;
-    //     j=0;
-    //
     // }
-    printf("\nUnique charecter array\n");
-    for (int i =0;i<uwc;i++) {
-        for (int j = 0;j<uwc;j++) {
-            printf("%c",uniquewords[i][j]);
+   int found=0;
+    for (int i=0;i<wcount;i++) {
+        for (int j=0;j<i;j++) {
+            if (strcmp(unquietwords[i],unquietwords[j])!=0) {
+                found=1;
+                break;
+            }
         }
-        printf("\n");
+        if (found==0) {
+            int count=0;
+            for (int k=0;k<wcount;k++) {
+                if (strcmp(unquietwords[i],words[k])) {
+                    count=count+1;
+                }
+            }
+            printf("%s %d\n",unquietwords[i],count);
+        }
     }
 
 
@@ -177,7 +178,3 @@ int main(void) {
 
     return 0;
 }
-
-
-
-
