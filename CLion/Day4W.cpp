@@ -1,6 +1,4 @@
-#include <algorithm>
 #include <stdio.h>
-#include<ctype.h>
 struct wordfrequency {
     char word[15];
     int frequency;
@@ -42,22 +40,9 @@ void strcpy(char *destination,char *source) {
     destination[j]='\0';
 
 }
-char* tolower(char *str) {
-    char *strat = str;
-    while (*str != '\0') {
-        if (*str >= 'A' && *str <= 'Z') {
-            //162 fails
-            //*str-='A'+'a'
-            //*str+=97-65;
-            *str = *str+32;
-        }
-        str=str+1;
-    }
-    return strat;
-}
 int main(void) {
     setbuf(stdout,0);
-    char paragraph[1000] = "BOB HIT A BALL BOB HIT A BALL BOB HIT A BALL BOB HIT A BALL BOB HIT A BALL BOB HIT A BALL BOB HIT A BALL BOB HIT A BALL BOB HIT A BALL BOB HIT A BALL";
+    char paragraph[1000] = "There was a time when he would have embraced the change that was coming. In his youth, he sought adventure and the unknown, but that had been years ago. He wished he could go back and learn to find the excitement that came with change but it was useless. That curiosity had long left him to where he had come to loathe anything that put him out of his comfort zone";
 
     //printf("%d",sizeof(paragraph));
     //printf("%s",paragraph);
@@ -160,7 +145,7 @@ int main(void) {
     int index1=0,index11=0,index2=0;
     int maxcount[10];
     int indexmaxcount=0;
-    char bannedword[10]="";
+    char bannedword[10]="hit";
     for (int i=0;i<wcount;i++) {
         int found=0;
 
@@ -202,20 +187,9 @@ int main(void) {
         }
     }
     printf("+++++++++++++++\n");
-   // for (char   = 0; i < index1; i++) {
-        printf("%s %d\n", uniquewords[maxiummcount], wordsfrequency[maxiummcount]);
-  //  }
     for (int i = 0; i < index1; i++) {
-        for (int j = 0; j < index1; j++) {
-            char ch = unquietwords[i][j];
-            if (ch >= 'A' &&ch <= 'Z') {
-                ch = ch +32;
-            }
-        }
+        printf("%s %d\n", uniquewords[maxiummcount], wordsfrequency[maxiummcount]);
     }
-    printf("To lower one----\n");
-   char  *w = tolower(uniquewords[maxiummcount]);
-    printf("%s %d\n", w, wordsfrequency[maxiummcount]);
 
 
 
