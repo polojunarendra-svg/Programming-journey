@@ -77,7 +77,7 @@ int main(void) {
     char word[10] = {"a"};
     printf("%s\n",word);
 
-    for (int  i = 0; i<= wcount;i++) {
+    for (int  i = 0; i< wcount;i++) {
         //printf("%s\n",words[i]);
         if (strcmp(word,words[i]) != 0) {
             printf("matched at index %d \n",i);
@@ -121,7 +121,7 @@ int main(void) {
 
 
     }
-    char unquietwords[35][5];
+    char unquietwords[100][20];
     for (int i =0,j=0,index=0;i<wcount;i++) {
         while (words[i][j]!='\0') {
             unquietwords[index][j] = words[i][j];
@@ -140,16 +140,17 @@ int main(void) {
     //     printf("\n");
     // }
     printf("====================\n");
-    char uniquewords[35][10];
-    int wordsfrequency[10];
+    char uniquewords[100][50];
+    int wordsfrequency[100];
     int index1=0,index11=0,index2=0;
-   int found=0;
     int maxcount[10];
     int indexmaxcount=0;
     char bannedword[10]="hit";
     for (int i=0;i<wcount;i++) {
+        int found=0;
+
         for (int j=0;j<i;j++) {
-            if (strcmp(unquietwords[i],unquietwords[j])!=0) {
+            if (strcmp(unquietwords[i],unquietwords[j])) {
                 found=1;
                 break;
             }
@@ -162,8 +163,8 @@ int main(void) {
                 }
             }
 
-           if (strcmp(words[i],bannedword)==0) {
-            uniquewords[index1]=words[i];
+           if (!strcmp(words[i],bannedword)) {
+            strcpy( uniquewords[index1],words[i]);
                 wordsfrequency[index2]=count;
                index1=index1+1;
                index2=index2+1;
@@ -173,11 +174,21 @@ int main(void) {
 
             }
         }
-        for (int i=0;i<wcount;i++) {
-            for (int j=0;j<i;j++) {
-                printf("%s %d\n",uniquewords[i],wordsfrequency[i]);
-            }
+
+    }
+    printf("----------\n");
+    int maxiummcount=0;
+    for (int i = 0; i < index1; i++) {
+        printf("%s %d\n", uniquewords[i], wordsfrequency[i]);
+    }
+    for (int i = 0; i < index1; i++) {
+        if (wordsfrequency[i] > wordsfrequency[maxiummcount]) {
+          maxiummcount=i;
         }
+    }
+    printf("+++++++++++++++\n");
+    for (int i = 0; i < index1; i++) {
+        printf("%s %d\n", uniquewords[maxiummcount], wordsfrequency[maxiummcount]);
     }
 
 
