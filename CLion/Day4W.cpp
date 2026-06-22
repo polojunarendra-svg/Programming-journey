@@ -190,7 +190,8 @@ int main(void) {
     for (int i = 0; i < index1; i++) {
         printf("%s %d\n", uniquewords[maxiummcount], wordsfrequency[maxiummcount]);
     }
-
+for(int i=0;i<strlen(uniquewords[maxiummcount]);i++){
+if(uniquewords[maxiummcount]=>'A'&& uniquewords [maxiummcount]<='Z'){
 
 
     // int a = 10;
