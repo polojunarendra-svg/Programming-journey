@@ -42,7 +42,7 @@ void strcpy(char *destination,char *source) {
 }
 int main(void) {
     setbuf(stdout,0);
-    char paragraph[1000] = "There was a time when he would have embraced the change that was coming. In his youth, he sought adventure and the unknown, but that had been years ago. He wished he could go back and learn to find the excitement that came with change but it was useless. That curiosity had long left him to where he had come to loathe anything that put him out of his comfort zone";
+    char paragraph[1000] = "Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball";
 
     //printf("%d",sizeof(paragraph));
     //printf("%s",paragraph);
@@ -187,9 +187,9 @@ int main(void) {
         }
     }
     printf("+++++++++++++++\n");
-    for (int i = 0; i < index1; i++) {
+   // for (int i = 0; i < index1; i++) {
         printf("%s %d\n", uniquewords[maxiummcount], wordsfrequency[maxiummcount]);
-    }
+  //  }
 
 
 
