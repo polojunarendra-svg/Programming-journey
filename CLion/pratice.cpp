@@ -42,7 +42,7 @@ void strcpy(char *destination,char *source) {
 }
 int main(void) {
     setbuf(stdout,0);
-    char paragraph[1000] = "Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball";
+    char paragraph[1000] = "There was a time when he would have embraced the change that was coming. In his youth, he sought adventure and the unknown, but that had been years ago. He wished he could go back and learn to find the excitement that came with change but it was useless. That curiosity had long left him to where he had come to loathe anything that put him out of his comfort zone";
 
     //printf("%d",sizeof(paragraph));
     //printf("%s",paragraph);
@@ -139,7 +139,11 @@ int main(void) {
     //     }
     //     printf("\n");
     // }
+    printf("====================\n");
    int found=0;
+    int maxcount[10];
+    int indexmaxcount=0;
+    char bannedword[10]="hit";
     for (int i=0;i<wcount;i++) {
         for (int j=0;j<i;j++) {
             if (strcmp(unquietwords[i],unquietwords[j])!=0) {
@@ -150,11 +154,16 @@ int main(void) {
         if (found==0) {
             int count=0;
             for (int k=0;k<wcount;k++) {
-                if (strcmp(unquietwords[i],words[k])) {
+                if (strcmp(words[i],words[k])) {
                     count=count+1;
                 }
             }
-            printf("%s %d\n",unquietwords[i],count);
+
+           if (strcmp(words[i],bannedword)==0) {
+                printf("%s %d\n",unquietwords[i],count);
+
+
+            }
         }
     }
 
