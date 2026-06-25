@@ -189,7 +189,15 @@ int main(void) {
     printf("+++++++++++++++\n");
     printf("%s %d\n", uniquewords[maxiummcount], wordsfrequency[maxiummcount]);
     printf("/////////////////");
-    strcpy(uniquewords[index1+1],bannedword);
+    int m =0;
+    for (int i =0;i<wcount;i++) {
+        if (strcmp(bannedword,uniquewords[i])==1) {
+            m=m+1;
+        }
+    }
+    strcpy(uniquewords[index1],bannedword);
+    wordsfrequency[index1] = m;
+    index1++;
     for (int i =0;i<index1;i++) {
         for (int j =i+1;j<index1;j++) {
             if (wordsfrequency[i] < wordsfrequency[j]) {
@@ -203,7 +211,7 @@ int main(void) {
             }
         }
     }
-    printf("---------------");
+    printf("\n---------------\n");
     for (int i =0;i<index1;i++) {
         printf("%s %d\n", uniquewords[i], wordsfrequency[i]);
     }
