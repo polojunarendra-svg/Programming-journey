@@ -1,6 +1,6 @@
 #include <stdio.h>
 struct wordfrequency {
-    char word[15];
+    char word[100];
     int frequency;
 };
 int strlen(char* str) {
@@ -46,7 +46,7 @@ int main(void) {
 
     //printf("%d",sizeof(paragraph));
     //printf("%s",paragraph);
-    char words[100][10];
+    char words[100][20];
     int wcount = 0;
     for (int i = 0,index = 0, j = 0 ; i<sizeof(paragraph)-1;i++) {
         //printf("%c\n",paragraph[i]);
@@ -140,7 +140,7 @@ int main(void) {
     //     printf("\n");
     // }
     printf("====================\n");
-    char uniquewords[100][50];
+    char uniquewords[100][100];
     int wordsfrequency[100];
     int index1=0,index11=0,index2=0;
     int maxcount[10];
@@ -187,9 +187,27 @@ int main(void) {
         }
     }
     printf("+++++++++++++++\n");
-    //for (int i = 0; i < index1; i++) {
-        printf("%s %d\n", uniquewords[maxiummcount], wordsfrequency[maxiummcount]);
-    //}
+    printf("%s %d\n", uniquewords[maxiummcount], wordsfrequency[maxiummcount]);
+    printf("/////////////////");
+    strcpy(uniquewords[index1+1],bannedword);
+    for (int i =0;i<index1;i++) {
+        for (int j =i+1;j<index1;j++) {
+            if (wordsfrequency[i] < wordsfrequency[j]) {
+               int temp = wordsfrequency[i];
+                wordsfrequency[i] = wordsfrequency[j];
+                wordsfrequency[j] = temp;
+                char tempw[50];
+                strcpy(tempw,uniquewords[i]);
+                strcpy(uniquewords[i],uniquewords[j]);
+                strcpy(uniquewords[j],tempw);
+            }
+        }
+    }
+    printf("---------------");
+    for (int i =0;i<index1;i++) {
+        printf("%s %d\n", uniquewords[i], wordsfrequency[i]);
+    }
+    printf("end");
 
 
 
