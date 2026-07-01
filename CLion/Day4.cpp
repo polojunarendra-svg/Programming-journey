@@ -1,0 +1,183 @@
+//
+// Created by poloj on 18-06-2026.
+//
+#include <stdio.h>
+struct wordfrequency {
+    char word[15];
+    int frequency;
+};
+int strlen(char* str) {
+    int count = 0;
+    for (int i = 0; str[i] !='\0' ; ++i) {
+        count = count + 1;
+    }
+    return count;
+}
+int strcmp(char *source,char *destination){
+        // printf("%s\n",destunation);
+        //printf("%d\n",strlen(source));
+        //printf("%d\n",strlen(destination));
+
+    if (strlen(source)==strlen(destination)) {
+        for (int i = 0; i < strlen(source); ++i) {
+            if (source[i]!=destination[i]) {
+                return 0;
+            }
+        }
+        return 1;
+
+    }
+    else {
+        return 0;
+    }
+
+}
+void strcpy(char *destination,char *source) {
+    //printf("\n%s\n",destination);
+    // printf("%s\n",source);
+    int j = 0;
+    while (source[j]!='\0') {
+        destination[j]=source[j];
+        j++;
+    }
+    destination[j]='\0';
+
+}
+int main(void) {
+    setbuf(stdout,0);
+    char paragraph[1000] = "Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball Bob hit a ball";
+
+    //printf("%d",sizeof(paragraph));
+    //printf("%s",paragraph);
+    int unguiecount=0;
+    char words[100][10];
+    int wcount = 0;
+    for (int i = 0,index = 0, j = 0 ; i<sizeof(paragraph)-1;i++) {
+        //printf("%c\n",paragraph[i]);
+        while (paragraph[i] != ' ' && i <sizeof(paragraph)-1) {
+            words[index][j] = paragraph[i];
+            i=i+1;
+            j= j+1;
+        }
+        wcount = wcount+1;
+        words[index][j] = '\0';
+        index = index+1;
+        j=0;
+    }
+    printf("word count = %d\n",wcount);
+    for (int i= 0 ; i<wcount;i++) {
+        int j = 0;
+        while (words[i][j]!='\0') {
+            printf("%c",words[i][j]);
+            j++;
+        }
+        printf("\n");
+        // printf("%s",words[i]);
+        // printf("\n");
+    }
+
+
+    printf("======word finding========\n");
+    char word[10] = {"a"};
+    printf("%s\n",word);
+
+    for (int  i = 0; i<= wcount;i++) {
+        //printf("%s\n",words[i]);
+        if (strcmp(word,words[i]) != 0) {
+            printf("matched at index %d \n",i);
+        }
+    }
+
+    // if (-105) {
+    //     printf("hi");
+    // }
+    //frequency
+    printf("%s\n",words[1]);
+
+    struct wordfrequency worddictionary[100];
+
+    for (int i = 0; i < wcount; ++i) {
+        strcpy(worddictionary[i].word , words[i]);
+        worddictionary[i].frequency = 0;
+
+    }
+
+    // for (int i = 0; i < wcount; ++i) {
+    //     printf("%s\t ",worddictionary[i].word);
+    //     printf("%d \n",worddictionary[i].frequency);
+    //
+    // }
+    for (int i = 0; i < wcount; ++i) {
+        for (int j = 0;j< wcount ; ++j) {
+            if (strcmp(worddictionary[i].word,worddictionary[j].word)) {
+                worddictionary[i].frequency +=1;
+            }
+        }
+    }
+    for (int i = 0; i < wcount; ++i) {
+        char *printedwords[10];
+        int flag = 0;
+        printedwords[i] = worddictionary[i].word;
+        //if () {
+            printf("%s\t ",worddictionary[i].word);
+            printf("%d \n",worddictionary[i].frequency);
+        //}
+
+
+    }
+    char uniquewords[100][10];
+    int uwc=0;
+    for (int i = 0; i < wcount; ++i) {
+        for (int j = 0;j<wcount;j++) {
+            strcpy (*uniquewords,*words);
+
+            printf("%c",uniquewords[i][j]);
+//printf("---------");
+            printf("%c",words[i][j]);
+        }
+    }
+    // for (int i =0,index=0;i<wcount;i++) {
+    //     int j=0;
+    //     while (words[i][j]!='\0') {
+    //         uniquewords[index][j] = words[i][j];
+    //         i++;
+    //         j++;
+    //     }
+    //     uwc=uwc+1;
+    //     printf("\n");
+    //     index++;
+    //     j=0;
+    //
+    // }
+    printf("\nUnique charecter array\n");
+    for (int i =0;i<uwc;i++) {
+        for (int j = 0;j<uwc;j++) {
+            printf("%c",uniquewords[i][j]);
+        }
+        printf("\n");
+    }
+
+
+
+    // int a = 10;
+    // printf("\n%d\n",a);
+    // printf("%p\n",(&a));
+    // printf("%d",*(&a));
+
+
+
+
+
+
+
+
+
+
+
+
+    return 0;
+}
+
+
+
+
