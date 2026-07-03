@@ -44,52 +44,98 @@
 // Aim for O(n × k log k) (sorting each word) or O(n × k) (character frequency signature), where k is the maximum string length.
 #include <cstring>
 #include<stdio.h>
-int mystrlen(char str[]){
+int length(char* text) {
     int count=0;
-    for(int i =0;str[i]!='\0';i++){
-        count=count+1;
+    while (text[count]!='\0') {
+        count++;
     }
     return count;
 }
-// int sizeof(char str[]){
-//     int count=0;
-//     int i;
-//     while(str[i]!='\0'){
-//         count=count+1;
-//     }
-//     return count;
-// }
-int main(void) {
-    char word[10][20]= {"eat","tea","tan","ate","nat","bat"};
-    int answer[10];
-    for (int i=0;i<10;i++) {
-        int len = mystrlen(word[i]);
-        int sum=0;
-        for (int j=0;j<len;j++) {
-            sum =  sum+ word[i][j];
+void Stringcopy(char *destination,char *source) {
+   // if (length(source)==length(destination)) {
+        int i=0;
+        while(source[i]!='\0') {
+            destination[i]=source[i];
+            i=i+1;
         }
-        answer[i]=sum;
-        //printf("%s\n",answer[i]);
+        destination[i]='\0';
+   // }
+}
+void Sorted(char *text) {
+    int lne = length(text);
+  for( int i=0;i<lne-1;i++) {
+      for(int j=i;j<lne;j++) {
+          if (text[i]>text[j]) {
+              char temp=text[i];
+              text[i]=text[j];
+              text[j]=temp;
+          }
+      }
 
-        //index=index+1;
-
-    }
-    for (int i = 0;i<10;i++) {
-        printf(" %s->%d\n",word[i],answer[i]);
-    }
-    int index=0;
-    int row=0;
-    char result[10][20];
-    for (int i=0;i<10;i++) {
-        for (int j=0;j<10;j++) {
-            if (answer[i]==answer[j]) {
-                strcpy(result[index],word[j]);
+  }
+}
+int Stringcompare(char *text1,char *text2) {
+    int count=0;
+    int l1 = length(text1);
+    int l2 = length(text2);
+    if (l1!=l2) {
+        for (int i=0;i<l1;i++) {
+            if (text1[i]==text2[i]) {
+                count=count+1;
             }
         }
-        index=index+1;
-
     }
+    if (count==l1) {
+        return 1;
+    }
+    else {
+        return 0;
+    }
+}
 
-    return 0;
+// char *Adding(char *text) {
+//     int len=length(text);
+//     char temp[10]="";
+//     for( int i=0;i<len;i++) {
+//         temp=temp+text[i];
+//     }
+//     return temp;
+// }
+
+int main(void) {
+    char List[10][10]={"eat","tea","tan","ate","nat","bat"};
+    int n =0,i=0;
+    while (List[i][0]!=NULL) {
+        i=i+1;
+        n=n+1;
+    }
+    printf("N value is : %d\n",n);
+    char ans[n][10];
+    char temp[n][10];
+    char uniquewords[n][10];
+    char RealList[n][10];
+    for(int i=0;i<n;i++) {
+        Stringcopy(RealList[i],List[i]);
+        Sorted(RealList[i]);
+    }
+    for(int i=0;i<n;i++) {
+        printf("%s\n",RealList[i]);
+    }
+    for(int i=0;i<n;i++) {
+
+            for(int j=0;j<n;j++) {
+                if (Stringcompare(uniquewords[i],RealList[i])) {
+                    continue;
+                }
+                temp[i][j]=List[i][j];
+                uniquewords[i][j]=RealList[i][j];
+
+            }
+            ans[i]=temp[i];
+            temp[n][n]={};
+        }
+        for (int i =0;i<n;i++) {
+            printf("%s\n",temp[i]);
+        }
 
 }
