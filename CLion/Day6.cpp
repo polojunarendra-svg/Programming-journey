@@ -42,7 +42,7 @@
 // Requirements
 // Do not compare every string with every other string (O(n²) is too slow).
 // Aim for O(n × k log k) (sorting each word) or O(n × k) (character frequency signature), where k is the maximum string length.
-#include <cstring>
+#include <list>
 #include<stdio.h>
 int length(char* text) {
     int count=0;
@@ -78,7 +78,7 @@ int Stringcompare(char *text1,char *text2) {
     int count=0;
     int l1 = length(text1);
     int l2 = length(text2);
-    if (l1!=l2) {
+    if (l1==l2) {
         for (int i=0;i<l1;i++) {
             if (text1[i]==text2[i]) {
                 count=count+1;
@@ -93,49 +93,44 @@ int Stringcompare(char *text1,char *text2) {
     }
 }
 
-// char *Adding(char *text) {
-//     int len=length(text);
-//     char temp[10]="";
-//     for( int i=0;i<len;i++) {
-//         temp=temp+text[i];
-//     }
-//     return temp;
-// }
+char *Adding(char *s1,char *s2) {
+
+}
 
 int main(void) {
     char List[10][10]={"eat","tea","tan","ate","nat","bat"};
-    int n =0,i=0;
-    while (List[i][0]!=NULL) {
-        i=i+1;
+    int n =0;
+    while (List[n][0]!='\0') {
         n=n+1;
     }
-    printf("N value is : %d\n",n);
-    char ans[n][10];
-    char temp[n][10];
-    char uniquewords[n][10];
-    char RealList[n][10];
-    for(int i=0;i<n;i++) {
+    char RealList[10][10];
+    printf("%d\n",n);
+    for (int i=0;i<n;i++){
         Stringcopy(RealList[i],List[i]);
         Sorted(RealList[i]);
-    }
-    for(int i=0;i<n;i++) {
         printf("%s\n",RealList[i]);
     }
-    for(int i=0;i<n;i++) {
-
-            for(int j=0;j<n;j++) {
-                if (Stringcompare(uniquewords[i],RealList[i])) {
-                    continue;
-                }
-                temp[i][j]=List[i][j];
-                uniquewords[i][j]=RealList[i][j];
-
+    int state[n];
+    for (int i=0;i<n;i++) {
+        state[i]=0;
+    }
+    printf("///////////\n");
+    for (int i=0;i<n;i++) {
+        if (state[i]==1) {
+            continue;
+        }
+        printf("[");
+        printf("%s,",List[i]);
+        state[i]=1;
+        for (int j=i+1;j<n;j++) {
+            if (Stringcompare(RealList[i],RealList[j])) {
+                printf(",%s",List[j]);
+                state[j]=1;
             }
-            ans[i]=temp[i];
-            temp[n][n]={};
         }
-        for (int i =0;i<n;i++) {
-            printf("%s\n",temp[i]);
-        }
+        printf("]\n");
+
+    }
+    return 0;
 
 }
