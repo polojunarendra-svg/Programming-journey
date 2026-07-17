@@ -1,16 +1,15 @@
 def Split(text):
-    list = []
     word=""
-    for i in text:
-        if i!=" ":
-            word = word+i;
-        else:
-           if word!=" ":
-               list.append(word)
-           word=" "
-    if word != " ":
-            list.append(word)
-    return list
+    words=[]
+    for letter in text:
+        if letter in ['.',',',' ']:
+            if word!="":
+                words.append(word)
+            word=""
+        # print()
+    else:
+        word=word+letter
+    return words
 
 def length(str):
     count=0;

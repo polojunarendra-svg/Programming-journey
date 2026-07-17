@@ -36,4 +36,6 @@ for i in range(len(RealList)):
             uniquecheck.append(j)
     ans.append(temp)
     temp=[]
-print(ans)
+#print(ans)
+for i in ans:
+    print(i)
