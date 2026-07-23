@@ -5,16 +5,20 @@
 int length(int arr[]);
 int TwoSum(int arr[],int target,int ans[]);
 void ProductOfArray(int arr[]);
+int  SubArraySum(int arr[],int target);
 int main(void) {
-    int arr[]={2,7,11};
-    int target=9;
-    int ans[2];
-    TwoSum(arr,target,ans);
-    printf("%d %d",ans[0],ans[1]);
+    // int arr[]={2,7,11};
+    // int target=9;
+    // int ans[2];
+    // TwoSum(arr,target,ans);
+    // printf("%d %d",ans[0],ans[1]);
     //---------------------------------
     //failed one
     // int arr[]={1,2,3,4};
     // ProductOfArray(arr);
+    //----------------------
+    int arr[]={1,1,1};
+    printf("%d",SubArraySum(arr,2));
     return 0;
 }
 int length(int arr[]) {
@@ -81,4 +85,25 @@ void ProductOfArray(int arr[]){
     //     printf("%d,",ans[i]);
     // }
 
+}
+//--Once ask the sir about the running
+int  SubArraySum(int arr[],int target){
+    int count=0,i=0;
+    int n =length(arr)-1;
+    int left=0;
+    int right=left+1;
+    int sum=0;
+    while (left<n-1) {
+      sum=sum+arr[i];
+        if (sum==target) {
+            left=left+1;
+            count=count+1;
+            sum=0;
+        }
+        else {
+            right=right+1;
+            i=i+1;
+        }
+    }
+    return count;
 }
