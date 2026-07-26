@@ -47,5 +47,40 @@ def ProductOfArray(arr):
             product=1
 
     return ans
-arr=[1,2,3,4]
-ProductOfArray(arr)
+# arr=[1,2,3,4]
+# ProductOfArray(arr)
+def subArraySum(arr,target):
+    n = length(arr)
+    left=0
+    i=0
+    count=0
+    right=left+1
+    sum=0
+    while(left<n-1):
+        sum=sum+arr[i]
+        if(sum==target):
+            left=left+1
+            count=count+1
+            sum=0
+        else:
+            right=right+1
+            i=i+1
+
+    print(count)
+arr= [1,1,1]
+k=2
+subArraySum(arr,k)
+def longestSubString(str1):
+    n = length(str1)
+    ls = list(str1)
+    un = set(ls)
+    ans = ""
+    for i in un:
+        ans=ans+i
+    if ans in str1:
+        return ans
+
+    # print(ls)
+    # print(un)
+    # print(ans)
+# print(longestSubString("abcabcbb"))

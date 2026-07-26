@@ -36,5 +36,35 @@ def mul(a,b):
         a=a<<1
         b=b>>1
     return i
-print(mul(8,3))
-# print(bin(54))
+print(mul(-8,13))
+# def add(a,b):
+#
+#     return a^b
+# def sub(a,b):
+#     return a+~b+1
+# # print(sub(8,3))
+# # print(add(3,7))
+# # print(bin(54))
+# class Demo:
+#     def ___init__(self):
+#         print("Hello")
+#     def __init__(self,a):
+#         self.a=a
+#     def print(self):
+#         print(self.a)
+# # d=Demo(12)
+# # d.print()
+# # def print(text):
+# #     n=int(input(":"))
+# #     for i in range(n):
+# #         print(i," ",text)
+# # # print("Hello")
+# # def none(a):
+# #     print(a)
+# # none(3)
+# # def function4(a, b, c=89):
+# #     print(a, b, c)
+# # function4("Hi",3)
+# def function5(a, b,*c):
+#     return a,b,*c
+# print(function5(1,2,3,4,5,6,7,8,9,10,12,23,35))
