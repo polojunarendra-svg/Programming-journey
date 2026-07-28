@@ -1,9 +1,5 @@
-list =[3,1,5,2]
-ans=list
-print(ans)
-n = len(list)
-for i in range(n):
-    j=i+1
-    if j<=n:
-        list[i]=ans[i]+ans[j]
-print(ans)
+#How it is calculated:Index 0: 3 Index 1: 3 + 1 = 4 Index 2: 3 + 1 + 5 = 9Index 3: 3 + 1 + 5 + 2 = 11
+lst=[3, 1, 5, 2]
+for i in range(1,len(lst)):
+    lst[i]=lst[i]+lst[i - 1]
+print(lst)

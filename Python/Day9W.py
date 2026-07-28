@@ -1,14 +1,14 @@
 # # n =int(input("Enter the n :"))
 # # m =int(input("Enter the m :"))
 # # print(bin(n)," ",bin(m))
-# # print(bin(n<<m)," ",n<<m)
+# # # print(bin(n<<m)," ",n<<m)
 # def decimalToBinary(a):
 #     s=""
 #     while(a!=0):
 #         n = a%2
 #         s=s+str(n)
 #         a//=2
-#     return reversed(s)
+#     return s[::-1]
 # def reversed(str):
 #     n=len(str)-1
 #     rev=""
@@ -24,19 +24,21 @@
 #             i += 1
 #     except IndexError:
 #         return i
-#
-# # ans = decimalToBinary(5)
-# # print(ans)
-# def Addition(a,b):
-#     return a^b
+# #
+# ans = decimalToBinary(3)
+# print(ans)
+# # def Addition(a,b):
+# #     return a^b
 def mul(a,b):
     i=0
     while b!=0:
-        i=i+a
+        if b&1:
+            i=i+a
         a=a<<1
         b=b>>1
     return i
 print(mul(-8,13))
+# print(bin(-8))
 # def add(a,b):
 #
 #     return a^b
