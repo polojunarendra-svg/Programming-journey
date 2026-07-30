@@ -20,7 +20,6 @@ int main(void) {
         {
             if(contains(temp,string[j]))
                 break;
-
             temp[k]=string[j];
             k=k+1;
             temp[k]='\0';
