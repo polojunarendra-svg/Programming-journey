@@ -3,6 +3,7 @@ def diagonalDifference(arr):
     n = len(arr)
     sum=0
     rsum=0
+    # We can also do this in the single for loop
     for i in range(n):
         sum+=arr[i][i]
     for j in range(n):
