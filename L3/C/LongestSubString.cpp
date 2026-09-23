@@ -2,12 +2,11 @@
 // Created by poloj on 28-07-2026.
 //
 #include<stdio.h>
-
 int StringCompare(char *source, char *destination);
 int length(char *string);
 int contains(char *str, char ch);
 void copy(char *source, char *destination);
-int main(void) {
+int main(void){
     char string[] = "abcabcbb";
     char ans[20] = "";
     char temp[20];
@@ -31,7 +30,7 @@ int main(void) {
             }
         }
     }
-    printf("%s and wtih the length %d",ans, maxLen);
+    printf("%s and with the length %d",ans, maxLen);
 }
 int StringCompare(char *source, char *destination){
     int len=length(source);

@@ -4,14 +4,20 @@
 int main(void) {
     char string[10]="eceba";
     int k=2;
-    char unique[10]="";
-    for (int i =0;i<k;i++) {
-        unique[i]=string[i];
-    }
     int count=0;
-    for (int i =0;i<k;i++) {
+    char ans[]="";
+    for (int i =0;i<strlen(string);i++) {
 
+        for (int j=i;j<strlen(string);j++) {
+            ans[i]=string[i];
+            if (string[i]==string[j]) {
+                count=count+1;
+            }
+            if (count==k) {
+                break;
+            }
+        }
     }
-    printf("%s",unique);
+    printf("%s",ans);
     return 0;
 }
