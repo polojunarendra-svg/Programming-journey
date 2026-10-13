@@ -1,13 +1,26 @@
-//
-// Created by poloj on 16-09-2026.
-//
-static int addition(int a , int b) {
-    
-    return a+b;
-}
-#include<stdio.h>
+#include <stdio.h>
+
 int main(void) {
-    int n = 5,m=6;
-   int ans = addition(n,m);
-    printf("%d",ans);
+    int nums[] = {1, 2, 3, 1};
+    int numsSize = 4;
+
+    int left = 0;
+    int right = 1;
+
+    while (left < numsSize - 1) {
+        if (nums[left] == nums[right]) {
+            printf("true\n");
+            return 0;
+        }
+
+        right++;
+
+        if (right == numsSize) {
+            left++;
+            right = left + 1;
+        }
+    }
+
+    printf("false\n");
+    return 0;
 }
